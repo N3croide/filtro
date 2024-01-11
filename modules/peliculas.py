@@ -56,8 +56,12 @@ def createPel():
 
 def searchPel():
     dbPel = peliculas
-    for key, item in dbPel.items():
-        print(" -- ".join(f"{llave.upper()}: {valor}" for llave, valor in item.items()))
+    for key, item in dbPel.get('blockbuster').get('peliculas').items():
+            for llave, valor in item.items():
+                if (type(valor) != dict):
+                    print(f"{llave.upper()}: {valor}")
+                else:
+                    print(f"{llave.upper()}: {valor.get('nombre')}")
     otf.pausa()
 
 def editPel():
@@ -74,28 +78,51 @@ def editPel():
                     ids.append(key)
         print("")
 
-    peliID = otf.validDato('Seleccione una pelicula', int)
+    peliID = otf.validDato('Seleccione una pelicula: ', int)
     while (peliID > i or peliID == 0):
         peliID = otf.validDato('Seleccione una opcion valida: ',int)
 
-    print(peliculas.get('blockbuster').get('peliculas').get(ids[peliID-1]))
+    print('\n'.join(f'{key}. {value}' for key, value in peliculas.get('blockbuster').get('peliculas').get(ids[peliID-1]).items()))
     otf.pausa()
 
-    print('Que desea editar ? \n1.Nombre\2.duracion\3.sinopsis\n4.generos\n5.actores\n6.formatos')
-    opcion = otf.validDato('selecciones una opcion',str)
+    print('Que desea editar ? \n1.Nombre\n2.duracion\n3.sinopsis\n4.generos\n5.actores\n6.formatos')
+    opcion = otf.validDato('selecciones una opcion: ',int)
 
     peliculaEdit = peliculas.get('blockbuster').get('peliculas').get(ids[peliID-1])
-    editar = {}
 
     if(opcion == 1):
         peliculaEdit.update({'nombre':otf.validDato('Ingrese el nuevo nombre',str)})
     elif(opcion == 2):
-        peliculaEdit.update({'nombre':otf.validDato('Ingrese el nuevo nombre',str)})
-    elif(opcion == 2):
+        peliculaEdit.update({'duracion':otf.validDato('Ingrese la nueva duracion',float)})
+    elif(opcion == 3):
+        peliculaEdit.update({'sinopsis':otf.validDato('Ingrese la nueva sinopsis',str)})
+    elif(opcion == 4):
         pass
-    elif(opcion == 2):
+    elif(opcion == 5):
         pass
-    elif(opcion == 2):
+    elif(opcion == 6):
         pass
-    elif(opcion == 2):
-        pass
+
+def delPel():
+    otf.bp()
+    i = 0
+    ids = []
+    for key, item in peliculas.get('blockbuster').get('peliculas').items():
+        i += 1
+        print(i,'. ',end='')
+        for llaves, valor in item.items():
+            if llaves == 'id' or llaves == 'nombre':
+                print(f'{llaves}: {valor}',end=' ')
+                if key not in ids:
+                    ids.append(key)
+        print("")
+
+    peliID = otf.validDato('Seleccione una pelicula: ', int)
+    while (peliID > i or peliID == 0):
+        peliID = otf.validDato('Seleccione una opcion valida: ',int)
+    pelDel = peliculas.get('blockbuster').get('peliculas').get(ids[peliID-1])
+
+    cfm.deleteData(DB = DB_ROUTE, delete = pelDel)
+    cfm.checkFile(DB= DB_ROUTE, data = peliculas)
+    print('Pelicula borrada con exito')
+    otf.pausa()

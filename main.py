@@ -34,7 +34,7 @@ if __name__ == "__main__":
             elif(opcion == 2):
                 pe.editPel()
             elif(opcion == 3):
-                pe.searchPel()
+                pe.delPel()
             elif(opcion == 4):
                 pe.searchPel()
             elif(opcion == 5):

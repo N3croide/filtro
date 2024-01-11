@@ -20,7 +20,12 @@ def addData(**param):
     with open(param['DB'],'r+') as db:
         db.seek(0)
         datos.update(param['data'])
-        json.dump(datos,db,indent=4)
+        json.dump(datos,db,indent = 4)
 
 def deleteData(**param):
-    pass
+    datos = loadFile(DB = param['DB'])
+    id = param['delete'].get('id')
+    datos.get('blockbuster').get('peliculas').pop(id)
+    addData(DB = param['DB'], data = datos)
+    with open(param['DB'],'w') as db:
+        json.dump(datos,db,indent = 4)
