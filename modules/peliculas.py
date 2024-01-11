@@ -137,3 +137,14 @@ def delPel():
     cfm.checkFile(DB= DB_ROUTE, data = peliculas)
     print('Pelicula borrada con exito')
     otf.pausa()
+
+def genero(**arg):
+    nombre = arg['gen']
+    for key, item in peliculas.get('blockbuster').get('peliculas').items():
+            if (item.get('genero') == nombre):
+                for llave, valor in item.items():
+                    if (type(valor) != dict):
+                        print(f"{llave.upper()}: {valor}")
+                    else:
+                        print(f"{llave.upper()}: {valor.get('nombre')}")
+    

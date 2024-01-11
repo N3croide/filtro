@@ -24,7 +24,7 @@ if __name__ == "__main__":
         elif(opcion == 4):
             opcion = me.mostrarMenu('informes')
             if(opcion == 1):
-                pass
+                pe.genero(gen = otf.validDato('Ingrese el genero: ',str))
             elif(opcion == 2):
                 pass
         elif(opcion == 5):
