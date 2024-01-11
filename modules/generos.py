@@ -44,8 +44,10 @@ def seleccionar() -> dict:
         for llave, valor in item.items():
             if(llave != 'id'):
                 print(i,'. ',valor)
+                i += 1
             else:
                 llaves.append(valor)
-            i += 1
     opcion = otf.validDato('Seleccione un genero: ',int)
-    return generos[llaves[opcion]]
+    while (opcion > i or opcion == 0):
+        opcion = otf.validDato('Seleccione una opcion valida: ',int)
+    return generos[llaves[opcion-1]]

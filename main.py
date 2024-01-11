@@ -32,7 +32,17 @@ if __name__ == "__main__":
             if(opcion == 1):
                 pe.createPel()
             elif(opcion == 2):
+                pe.editPel()
+            elif(opcion == 3):
                 pe.searchPel()
+            elif(opcion == 4):
+                pe.searchPel()
+            elif(opcion == 5):
+                pe.searchPel()
+            elif(opcion == 6):
+                pe.searchPel()
+            elif(opcion == 7):
+                pass
         elif(opcion == 6):
             break
     otf.bp()

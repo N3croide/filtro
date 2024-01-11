@@ -1,1 +1,24 @@
-{}
+{
+    "blockbuster": {
+        "peliculas": {
+            "P01": {
+                "id": "P01",
+                "nombre": "1",
+                "duracion": 1.0,
+                "sinopsis": "1",
+                "generos": {
+                    "id": "G01",
+                    "nombre": "Accion"
+                },
+                "actores": {
+                    "id": "A01",
+                    "nombre": "La roca"
+                },
+                "formato": {
+                    "id": "F01",
+                    "nombre": "DVD"
+                }
+            }
+        }
+    }
+}
