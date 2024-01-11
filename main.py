@@ -38,7 +38,9 @@ if __name__ == "__main__":
             elif(opcion == 4):
                 pe.searchPel()
             elif(opcion == 5):
-                pe.searchPel()
+                otf.bp()
+                nombre = otf.validDato('Ingrese el nombre de la pelicula: ', str)
+                pe.searchPel(pel = nombre)
             elif(opcion == 6):
                 pe.searchPel()
             elif(opcion == 7):

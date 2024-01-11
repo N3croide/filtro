@@ -54,14 +54,25 @@ def createPel():
     peliculas.get('blockbuster').get('peliculas').update(pel)
     cfm.addData(DB = DB_ROUTE, data = peliculas)
 
-def searchPel():
+def searchPel(**arg):
     dbPel = peliculas
-    for key, item in dbPel.get('blockbuster').get('peliculas').items():
-            for llave, valor in item.items():
-                if (type(valor) != dict):
-                    print(f"{llave.upper()}: {valor}")
-                else:
-                    print(f"{llave.upper()}: {valor.get('nombre')}")
+    if (len(arg) == 0):
+        for key, item in dbPel.get('blockbuster').get('peliculas').items():
+                for llave, valor in item.items():
+                    if (type(valor) != dict):
+                        print(f"{llave.upper()}: {valor}")
+                    else:
+                        print(f"{llave.upper()}: {valor.get('nombre')}")
+    else:
+        nombre = arg['pel']
+        for key, item in dbPel.get('blockbuster').get('peliculas').items():
+                if (item.get('nombre') == nombre):
+                    for llave, valor in item.items():
+                        if (type(valor) != dict):
+                            print(f"{llave.upper()}: {valor}")
+                        else:
+                            print(f"{llave.upper()}: {valor.get('nombre')}")
+        
     otf.pausa()
 
 def editPel():
