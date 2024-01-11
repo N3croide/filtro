@@ -1,1 +1,10 @@
-{}
+{
+    "A01": {
+        "id": "A01",
+        "nombre": "La roca"
+    },
+    "A02": {
+        "id": "A02",
+        "nombre": "Silvester"
+    }
+}

@@ -7,10 +7,20 @@ def newFile(**param):
 
 def checkFile(**param):
     if (os.path.isfile(param['DB'])):
-        param['data'] = loadFile(DB = param['DB'])
+        param['data'].update(loadFile(DB = param['DB']))
     else:
         newFile(DB = param['DB'], data = param['data'])
 
 def loadFile(**param):
     with open(param['DB'],'r') as db:
         return json.load(db)
+
+def addData(**param):
+    datos = loadFile(DB = param['DB'])
+    with open(param['DB'],'r+') as db:
+        db.seek(0)
+        datos.update(param['data'])
+        json.dump(datos,db,indent=4)
+
+def deleteData(**param):
+    pass

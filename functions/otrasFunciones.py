@@ -15,6 +15,8 @@ def validDato(cadena, tipo):
         tipoUsuario = 'Entero'
     elif(tipo == str):
         tipoUsuario = 'Cadena o texto'
+    elif(tipo == float):
+        tipoUsuario = 'Real'
     while(True):
         try:
             dato = tipo(input(cadena))

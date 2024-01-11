@@ -11,7 +11,12 @@ menus = {
 
 
 def mostrarMenu(menu : str):
-    otf.bp()
-    print('\n'.join (f'{i+1}. {item}' for i,item in enumerate(menus.get(menu))))
-    opcion = otf.validDato('Selecciones una opcion: ', int)
-    return opcion
+    while(True):
+        otf.bp()
+        print('\n'.join (f'{i+1}. {item}' for i,item in enumerate(menus.get(menu))))
+        opcion = otf.validDato('Selecciones una opcion: ', int)
+        if(opcion <= len(menus.get(menu))):
+            return opcion
+        else:
+            print('Opcion no valida')
+            otf.pausa()
