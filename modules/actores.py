@@ -1,0 +1,1 @@
+DB_ROUTE = 'data/actores.json'
